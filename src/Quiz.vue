@@ -23,6 +23,7 @@ export default{
     rand3:3,
     res:0,
     resIndex:0,
+    gameState:2,
     answer:[10,20,30,40]
   }
 },

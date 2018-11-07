@@ -2,15 +2,22 @@
 <div class="">
   <div class="flexcontainer">
     <h1>Correct!!</h1>
-    <button type="button" name="button">Try another one</button>
+    <button @click="restartGame">Try another one</button>
 
   </div>
 </div>
 
 </template>
 
-<script type="text/javascript">
+<script>
 
+export default{
+  methods:{
+        restartGame(){
+          this.$emit("gameState",2);
+        }
+  }
+}
 </script>
 
 <style scoped>
