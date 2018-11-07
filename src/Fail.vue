@@ -1,7 +1,7 @@
 <template id="">
 <div class="">
   <div class="flexcontainer">
-    <h1>Correct!!</h1>
+    <h1>Lose!!</h1>
     <button type="button" name="button">Try another one</button>
 
   </div>

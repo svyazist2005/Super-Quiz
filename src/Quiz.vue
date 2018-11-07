@@ -4,26 +4,63 @@
     <h3 class="question">Whats {{rand1}}{{rand2}}{{rand3}}</h3>
     <div class="flexcontainer">
       <span class="cells">
-        <span class="cell badge " >{{answer[0]}}</span>
-        <span class="cell badge " >{{answer[1]}}</span>
-        <span class="cell badge " >{{answer[2]}}</span>
-        <span class="cell badge " >{{answer[3]}}</span>
+        <span class="cell badge " v-for="(el,index) in answer" @click="checkAnswer(index)">{{el}}</span>
       </span>
 
     </div>
+
+    <!-- <button type="button" name="button" @click="generateQuestion"> GenerateQuestion</button> -->
 
   </div>
 </template>
 
 <script>
 export default{
+  props:['state'],
   data:function()
   {return{
     rand1:1,
     rand2:2,
     rand3:3,
+    res:0,
+    resIndex:0,
     answer:[10,20,30,40]
   }
+},
+  methods:{
+    generateQuestion(){
+      this.rand1=Math.floor(Math.random()*10)+Math.floor(Math.random()*10)*10;
+      this.rand3=Math.ceil(Math.random()*10)+Math.ceil(Math.random()*10)*10;
+      this.rand2=Math.random()*10>5?true:false;
+      this.res=this.rand2?this.rand1+this.rand3:this.rand1-this.rand3;
+      this.rand2=this.rand2?"+":"-";
+      this.resIndex=this.getRandomIntInclusive(0,3);
+      this.answer[this.resIndex]=this.res;
+    },
+    generateFakeAnswers(){
+      for(var i=0;i<=3;i++)
+      {if (i!=this.resIndex)
+        do{this.answer[i]=Math.floor(Math.random()*10)+Math.floor(Math.random()*10)*10;}
+        while(this.answer[i]==this.rand1 || this.answer[i]==this.rand2)
+      }
+    },
+    checkAnswer(i){
+      if(i==this.resIndex)
+      {alert("Correct");
+      this.res=true;}
+      else
+      {alert("Incorrect");
+      this.res=false;}
+    },
+    getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+    }
+  },
+  created(){
+    this.generateQuestion();
+    this.generateFakeAnswers();
   }
 }
 </script>
