@@ -1,15 +1,14 @@
 <template id="">
   <div>
+    <div class="flexcontainer">
+    <span class="badge question">What's {{rand1}}{{rand2}}{{rand3}}</span>
+  </div>
 
-    <h3 class="question">Whats {{rand1}}{{rand2}}{{rand3}}</h3>
     <div class="flexcontainer">
       <span class="cells">
-        <span class="cell badge " v-for="(el,index) in answer" @click="checkAnswer(index)">{{el}}</span>
+        <span class="cell badge" v-for="(el,index) in answer" @click="checkAnswer(index)">{{el}}</span>
       </span>
-
     </div>
-
-    <!-- <button type="button" name="button" @click="generateQuestion"> GenerateQuestion</button> -->
 
   </div>
 </template>
@@ -46,13 +45,13 @@ export default{
     },
     checkAnswer(i){
       if(i==this.resIndex)
-      {alert("Correct");
+      {//alert("Correct");
       this.res=true;
       this.gameState=1;
       this.$emit("gameState",this.gameState)
       }
       else
-      {alert("Incorrect");
+      {//alert("Incorrect");
       this.res=false;
       this.gameState=0;
       this.$emit("gameState",this.gameState)
@@ -78,9 +77,6 @@ export default{
 h1{
   text-align: center;
 }
-.question{
-  text-align: center;
-}
 .flexcontainer
 { display: flex;
   justify-content: center;
@@ -94,7 +90,13 @@ h1{
   align-items: center;
   width: 400px;
 }
+.question{
+text-align: center;
+background-color: orange;
+font-size: 30px;
+}
 .cell{
+  background-color: blue;
   font-size: 30px;
   display: flex;
   justify-content: center;
@@ -102,6 +104,11 @@ h1{
   padding:5px;
   margin:50px;
   cursor: context-menu;
+}
+.cell:hover{
+background-color: green;
+transition: transform 1s;
+transform: scale(1.2);
 }
 
 </style>

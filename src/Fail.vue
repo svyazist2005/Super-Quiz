@@ -27,4 +27,8 @@ export default{
   justify-content: center;
   align-items: center;
 }
+
+h1{
+  color:red;
+}
 </style>

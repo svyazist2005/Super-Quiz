@@ -1,10 +1,12 @@
 <template>
   <div id="app">
-    <h2>The Super Quiz</h2>
-    <!-- <quiz></quiz>
-    <win></win>
-    <fail></fail> -->
+    <hr>
+    <h1>The Super Quiz</h1>
+    <hr>
+    <transition
+    :enter-active-class="animation" mode="out-in">
     <component @gameState="state=$event" :is="componentSelect()"></component>
+    </transition>
   </div>
 </template>
 
@@ -16,7 +18,8 @@ import Fail from './Fail.vue'
 export default{
   data:function(){
     return{
-      state:2
+      state:2,
+      animation:'animated fadeInDown'
     }
   },
   components:{
@@ -27,9 +30,9 @@ export default{
   methods:{
     componentSelect(){
       switch (this.state){
-        case 0: return 'fail';console.log("fail");break;
-        case 1: return 'win';;console.log("win");break;
-        default: return 'quiz';console.log("quiz");;
+        case 0: this.animation="animated wobble";return 'fail';break;
+        case 1: this.animation="animated fadeIn";return 'win';break;
+        default: this.animation="animated fadeInUp";return 'quiz';break;
       }
     }
   }
@@ -37,8 +40,8 @@ export default{
 
 </script>
 
-<style scoped>
-h2{
+<style>
+h1{
   text-align: center;
 }
 </style>
