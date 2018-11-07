@@ -16,7 +16,6 @@
 
 <script>
 export default{
-  props:['state'],
   data:function()
   {return{
     rand1:1,
@@ -47,10 +46,16 @@ export default{
     checkAnswer(i){
       if(i==this.resIndex)
       {alert("Correct");
-      this.res=true;}
+      this.res=true;
+      this.gameState=1;
+      this.$emit("gameState",this.gameState)
+      }
       else
       {alert("Incorrect");
-      this.res=false;}
+      this.res=false;
+      this.gameState=0;
+      this.$emit("gameState",this.gameState)
+      }
     },
     getRandomIntInclusive(min, max) {
       min = Math.ceil(min);
@@ -59,6 +64,8 @@ export default{
     }
   },
   created(){
+    this.gameState=2;
+    this.$emit("gameState",this.gameState)
     this.generateQuestion();
     this.generateFakeAnswers();
   }
