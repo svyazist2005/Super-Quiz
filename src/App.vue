@@ -40,8 +40,13 @@ export default{
 
 </script>
 
-<style>
+<style scoped>
 h1{
+  font-size: 50px;
+  font-family: monospace;
+  color:white;
   text-align: center;
+  opacity: 0.6;
+  background-color: green;
 }
 </style>

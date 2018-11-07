@@ -89,6 +89,13 @@ h1{
   flex-wrap: wrap;
   align-items: center;
   width: 400px;
+  margin:10px;
+  border:1px solid  ;
+  border-color: #9E6666;
+  border-radius: 20px;
+  box-shadow: 2px 2px;
+  opacity: 0.7;
+
 }
 .question{
 text-align: center;
@@ -107,8 +114,9 @@ font-size: 30px;
 }
 .cell:hover{
 background-color: green;
-transition: transform 1s;
+transition: all 1s;
 transform: scale(1.2);
+
 }
 
 </style>

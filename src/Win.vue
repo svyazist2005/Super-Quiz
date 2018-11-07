@@ -2,7 +2,7 @@
 <div class="">
   <div class="flexcontainer">
     <h1>Correct!!</h1>
-    <button @click="restartGame">Try another one</button>
+    <button class="btn btn-primary" @click="restartGame">Try another one</button>
 
   </div>
 </div>
@@ -30,5 +30,6 @@ export default{
 }
 h1{
   color:green;
+    font-family: monospace;
 }
 </style>

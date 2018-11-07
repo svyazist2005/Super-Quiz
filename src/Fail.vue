@@ -1,8 +1,8 @@
 <template id="">
 <div class="">
   <div class="flexcontainer">
-    <h1>Lose!!</h1>
-    <button @click="restartGame">Try another one</button>
+    <h1>Incorrect!!</h1>
+    <button class="btn btn-primary" @click="restartGame">Try another one</button>
 
   </div>
 </div>
@@ -30,5 +30,6 @@ export default{
 
 h1{
   color:red;
+    font-family: monospace;
 }
 </style>
