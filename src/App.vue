@@ -3,9 +3,11 @@
     <hr>
     <h1>The Super Quiz</h1>
     <hr>
+    <h2>Wins:{{score[1]}} Fails:{{score[0]}}</h2>
+    <hr>
     <transition
     :enter-active-class="animation" mode="out-in">
-    <component @gameState="state=$event" :is="componentSelect()"></component>
+    <component @gameState="state=$event;state!=3?score[state]++:score=[0,0]" :is="componentSelect()"></component>
     </transition>
   </div>
 </template>
@@ -18,6 +20,7 @@ import Fail from './Fail.vue'
 export default{
   data:function(){
     return{
+      score:[0,0],
       state:2,
       animation:'animated fadeInDown'
     }
@@ -32,7 +35,8 @@ export default{
       switch (this.state){
         case 0: this.animation="animated wobble";return 'fail';break;
         case 1: this.animation="animated fadeIn";return 'win';break;
-        default: this.animation="animated fadeInUp";return 'quiz';break;
+        case 2: this.animation="animated fadeInUp";return 'quiz';break;
+        case 3: this.animation="animated fadeInUp";return 'quiz';break;
       }
     }
   }
@@ -41,12 +45,16 @@ export default{
 </script>
 
 <style scoped>
-h1{
+h1,h2{
   font-size: 50px;
   font-family: monospace;
   color:white;
   text-align: center;
   opacity: 0.6;
   background-color: green;
+}
+h2{
+  font-size: 30px;
+  color:yellow;
 }
 </style>

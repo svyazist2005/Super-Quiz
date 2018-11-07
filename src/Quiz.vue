@@ -1,7 +1,7 @@
 <template id="">
   <div>
     <div class="flexcontainer">
-    <span class="badge question">What's {{rand1}}{{rand2}}{{rand3}}</span>
+    <span class="badge question">What's {{rand1}}{{rand2}}{{rand3}} ?</span>
   </div>
 
     <div class="flexcontainer">
@@ -99,7 +99,10 @@ h1{
 }
 .question{
 text-align: center;
-background-color: orange;
+background-color: grey;
+padding:20px;
+padding-left : 70px;
+padding-right : 70px;
 font-size: 30px;
 }
 .cell{

@@ -2,9 +2,11 @@
 <div class="">
   <div class="flexcontainer">
     <h1>Correct!!</h1>
-    <button class="btn btn-primary" @click="restartGame">Try another one</button>
-
-  </div>
+    <div class="buttons ">
+      <button class="btn btn-primary" @click="restartGame">Try another one</button>
+      <button class="btn btn-danger" @click="resetGame">Reset game</button>
+    </div>
+</div>
 </div>
 
 </template>
@@ -15,6 +17,9 @@ export default{
   methods:{
         restartGame(){
           this.$emit("gameState",2);
+        },
+        resetGame(){
+          this.$emit("gameState",3);
         }
   }
 }
@@ -31,5 +36,10 @@ export default{
 h1{
   color:green;
     font-family: monospace;
+}
+
+.buttons{
+  display:inline-block;
+
 }
 </style>
