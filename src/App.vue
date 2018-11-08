@@ -5,8 +5,10 @@
     <hr>
     <h2>Wins:{{score[1]}} Fails:{{score[0]}}</h2>
     <hr>
+    <!-- <transition
+    :enter-active-class="animation" mode="out-in"> -->
     <transition
-    :enter-active-class="animation" mode="out-in">
+    name="rotate" mode="out-in">
     <component @gameState="state=$event;state!=3?score[state]++:score=[0,0]" :is="componentSelect()"></component>
     </transition>
   </div>
@@ -45,6 +47,7 @@ export default{
 </script>
 
 <style scoped>
+
 h1,h2{
   font-size: 50px;
   font-family: monospace;
@@ -57,4 +60,31 @@ h2{
   font-size: 30px;
   color:yellow;
 }
+
+.rotate-enter{
+}
+.rotate-enter-active{
+  animation:rotateIn 1s
+}
+
+.rotate-leave{
+}
+
+.rotate-leave-active{
+  animation:rotateOut 1s
+}
+
+
+@keyframes rotateIn{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(90deg);}
+}
+
+@keyframes rotateOut{
+  from{transform:rotate(90deg);}
+  to{transform:rotate(0deg);}
+}
+
+
+
 </style>
