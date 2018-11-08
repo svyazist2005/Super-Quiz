@@ -8,7 +8,7 @@
     <!-- <transition
     :enter-active-class="animation" mode="out-in"> -->
     <transition
-    name="rotate" mode="out-in">
+    :name="animation" mode="out-in">
     <component @gameState="state=$event;state!=3?score[state]++:score=[0,0]" :is="componentSelect()"></component>
     </transition>
   </div>
@@ -35,10 +35,14 @@ export default{
   methods:{
     componentSelect(){
       switch (this.state){
-        case 0: this.animation="animated wobble";return 'fail';break;
-        case 1: this.animation="animated fadeIn";return 'win';break;
-        case 2: this.animation="animated fadeInUp";return 'quiz';break;
-        case 3: this.animation="animated fadeInUp";return 'quiz';break;
+        // case 0: this.animation="animated wobble";return 'fail';break;
+        // case 1: this.animation="animated fadeIn";return 'win';break;
+        // case 2: this.animation="animated fadeInUp";return 'quiz';break;
+        // case 3: this.animation="animated fadeInUp";return 'quiz';break;
+        case 0: this.animation="zoom";return 'fail';break;
+        case 1: this.animation="rotate";return 'win';break;
+        case 2: this.animation="rotate";return 'quiz';break;
+        case 3: this.animation="skew";return 'quiz';break;
       }
     }
   }
@@ -64,27 +68,67 @@ h2{
 .rotate-enter{
 }
 .rotate-enter-active{
-  animation:rotateIn 1s
+  animation:rotateIn 0.5s
 }
 
 .rotate-leave{
 }
 
 .rotate-leave-active{
-  animation:rotateOut 1s
+  animation:rotateOut 0.5s
 }
 
 
 @keyframes rotateIn{
   from{transform:rotate(0deg);}
-  to{transform:rotate(90deg);}
+  to{transform:rotate(360deg);}
 }
 
 @keyframes rotateOut{
-  from{transform:rotate(90deg);}
+  from{transform:rotate(360deg);}
   to{transform:rotate(0deg);}
 }
 
+.zoom-enter{
+}
+.zoom-enter-active{
+  animation:zoomIn 0.5s
+}
+.zoom-leave{
+}
+.zoom-leave-active{
+  animation:zoomOut 0.5s
+}
 
+@keyframes zoomIn{
+  from{transform:scale(1,1);}
+  to{transform:scale(1.2,1.2);}
+}
+
+@keyframes zoomOut{
+  from{transform:scale(1.2,1.2);}
+  to{transform:scale(1,1);}
+}
+
+.skew-enter{
+}
+.skew-enter-active{
+  animation:skewIn 1s
+}
+.skew-leave{
+}
+.skew-leave-active{
+  animation:skewOut 1s
+}
+
+@keyframes skewIn{
+  from{transform:skew(0deg);}
+  to{transform:skew(50deg);}
+}
+
+@keyframes skewOut{
+  from{transform:skew(50deg);}
+  to{transform:skew(0deg);}
+}
 
 </style>
